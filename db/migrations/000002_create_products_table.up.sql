@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS products (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name VARCHAR(255) NOT NULL,
+    price NUMERIC NOT NULL,
+    image_url VARCHAR(255) NOT NULL,
+    stock INT NOT NULL,
+    condition VARCHAR(255) NOT NULL,
+    tags TEXT[] NOT NULL,
+    is_purchasable BOOLEAN NOT NULL,
+    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMPTZ
+);
